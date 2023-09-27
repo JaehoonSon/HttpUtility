@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Concurrent;
 
-namespace HttpUtility;
+namespace HttpUtility.AdvancedCollections;
 
 public class NonDuplicateConcurrentQueue<T> : IDisposable
 {

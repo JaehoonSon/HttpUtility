@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HttpUtility;
+﻿namespace HttpUtility;
 public class ClientHelper
 {
     public static void AddRandomUserAgent(ref HttpClient client)

@@ -5,27 +5,27 @@ namespace HttpUtility.AdvancedCollections;
 
 public class NonDuplicateConcurrentQueue<T> : IDisposable
 {
-    private HashSet<T> set = new();
-    private ConcurrentQueue<T> que;
+    private HashSet<T> _set = new();
+    private ConcurrentQueue<T> _que;
 
     public NonDuplicateConcurrentQueue(ref ConcurrentQueue<T> item)
     {
-        que = item;
+        _que = item;
     }
     public void AddToQueue(T item)
     {
-        if (!set.Contains(item))
+        if (!_set.Contains(item))
         {
-            que.Enqueue(item);
-            set.Add(item);
+            _que.Enqueue(item);
+            _set.Add(item);
         }
     }
     public bool TryAddToQueue(T item)
     {
-        if (!set.Contains(item))
+        if (!_set.Contains(item))
         {
-            que.Enqueue(item);
-            set.Add(item);
+            _que.Enqueue(item);
+            _set.Add(item);
             return true;
         }
         return false;
@@ -34,10 +34,10 @@ public class NonDuplicateConcurrentQueue<T> : IDisposable
     //Only use this method if you want the class to keep track of unique items in the set; otherwise, do not use this method
     public bool TryRemoveFromQueue(out T item)
     {
-        if (que.TryDequeue(out var item2))
+        if (_que.TryDequeue(out var item2))
         {
             item = item2;
-            set.Remove(item2);
+            _set.Remove(item2);
             return true;
         }
 
